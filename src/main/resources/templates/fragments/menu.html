@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="menu">
+	<ul class="nav flex-column nav-pills">
+		<li class="nav-item">
+			<a class="nav-link" aria-current="page" href="/index">Index</a>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" href="/home">Home</a>
+		</li>
+		<li class="nav-item ">
+			<a class="nav-link" href="/product">Product</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link disabled" href="#" tabindex="-1"
+				aria-disabled="true">Disabled</a>
+		</li>
+	</ul>
+	<script th:inline="javascript">
+		    /////////////////////////// 
+			window.onload = (event) => {
+				///[^/]*$/.exec("foo/bar/test.html")[0]
+				const currentUrl = /[^/]*$/.exec(window.location.href)[0]
+				console.log('currentUrl ::==',currentUrl)
+				const item = document.querySelectorAll('[href="/'+currentUrl+'"]')
+				console.log('item ::==',item)
+				item[0].classList.add('active')
+			}
+	</script>
+</div>
